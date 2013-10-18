@@ -102,7 +102,7 @@ fi
 # Workspace and build configuration
 TARGET_SDK="iphoneos"								# Target SDK: iphoneos
 
-BUILD_DIR="../build"                   	# Directory where the build is generated
+BUILD_DIR="build"                   	# Directory where the build is generated
 BUILD_ARCHIVED_DIR="BuildArchived"					# Directory with the history of builds
 
 #Release Notes
@@ -116,10 +116,6 @@ then
 	  echo Export environment variable for codesign_allocate location
 	    export CODESIGN_ALLOCATE=/Developer/Platforms/iPhoneOS.platform/Developer/usr/bin/codesign_allocate
     fi
-
-
-# Returns to the root directory` of the build
-cd ..
 
 PWD=`pwd`
 PROJECT_BUILDDIR="${PWD}/build/${CONFIGURATION}-${TARGET_SDK}"
