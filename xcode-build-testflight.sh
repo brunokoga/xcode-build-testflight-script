@@ -7,19 +7,20 @@
 #                                                      #
 ########################################################
 
-
-# Arguments:
-# -c                    Use CocoaPods
-# -p PROJECT_NAME
-# -s SCHEME_NAME
-# -v VERSION
-# -i ICON_PATH
-# -n APP_NAME
-# -t TESTFLIGHT_TEAM_TOKEN
-# -a TESTFLIGHT_API_TOKEN
-# -d TESTFLIGHT_DISTRIBUTION_LIST
-# -r CERTIFICATE_NAME
-# -f CONFIGURATION
+USAGE_MESSAGE="
+ Usage:
+ -c Use CocoaPods flag
+ -p PROJECT_NAME
+ -s SCHEME_NAME
+ -v VERSION
+ -i ICON_PATH
+ -n APP_NAME
+ -t TESTFLIGHT_TEAM_TOKEN
+ -a TESTFLIGHT_API_TOKEN
+ -d TESTFLIGHT_DISTRIBUTION_LIST
+ -r CERTIFICATE_NAME
+ -f CONFIGURATION
+ -h Help Message"
 
 USE_COCOA_PODS=NO
 PROJECT_NAME=""
@@ -39,7 +40,7 @@ function test_args {
 	fi
 }
 
-while getopts ":cp:s:f:i:n:t:a:d:r:" opt; do
+while getopts ":chp:s:f:i:n:t:a:d:r:" opt; do
 	case $opt in
 		c)
 			USE_COCOA_PODS=YES
@@ -80,7 +81,10 @@ while getopts ":cp:s:f:i:n:t:a:d:r:" opt; do
 			test_args
 			CONFIGURATION=$OPTARG
 			;;
-
+		h)
+			echo "$USAGE_MESSAGE"
+			exit
+			;;
 		\?)
 			echo "Invalid option: -$OPTARG" >&2
 			;;
